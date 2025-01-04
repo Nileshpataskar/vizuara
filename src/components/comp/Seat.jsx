@@ -1,8 +1,8 @@
-import { useFlightSelectionStore } from "@/lib/useFlightStore";
+import { usePassengerDetailsStore } from "@/lib/usePassengerDetails";
 import { Chair01Icon } from "hugeicons-react";
 
 export const Seat = ({ seatNumber }) => {
-  const { selectedSeats, setSelectedSeats } = useFlightSelectionStore();
+  const { selectedSeats, setSelectedSeats } = usePassengerDetailsStore();
   const isSelected = selectedSeats.includes(seatNumber);
 
   return (

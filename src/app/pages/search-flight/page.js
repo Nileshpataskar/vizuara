@@ -22,8 +22,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useFlightSelectionStore, useFlightStore } from "@/lib/useFlightStore";
+import {  useFlightStore } from "@/lib/useFlightStore";
 import Link from "next/link";
+import { usePassengerDetailsStore } from "@/lib/usePassengerDetails";
 
 const TextField = dynamic(() => import("@mui/material/TextField"), {
   ssr: false,
@@ -51,7 +52,7 @@ const Page = () => {
     isSearchDisabled,
   } = useFlightStore();
 
-  const { setSelectedFlight, selectedFlight } = useFlightSelectionStore();
+  const { setSelectedFlight, selectedFlight } = usePassengerDetailsStore();
 
   const switchLocations = () => {
     setFrom(to);

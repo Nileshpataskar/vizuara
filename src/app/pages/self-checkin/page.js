@@ -1,8 +1,11 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const page = () => {
+const SelfCheckin = () => {
   return (
     <div>
       <div className="flex w-full item-center justify-center mt-10 flex-col space-y-14">
@@ -20,10 +23,20 @@ const page = () => {
           >
             Verify Passenger
           </Button>
+          {/* {capturedImages.map((image, i) => (
+            <div className="h-32 w-full " key={i}>
+              <Image
+                src={image}
+                alt="captured image"
+                height={100}
+                width={100}
+              />
+            </div>
+          ))} */}
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default SelfCheckin;

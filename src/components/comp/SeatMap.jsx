@@ -1,13 +1,13 @@
 "use client";
-import { useFlightSelectionStore } from "@/lib/useFlightStore";
 import { Seat } from "./Seat";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { usePassengerDetailsStore } from "@/lib/usePassengerDetails";
 
 const rows = Array.from({ length: 14 }, (_, i) => i + 1);
 
 export const SeatMap = () => {
-  const { selectedSeats } = useFlightSelectionStore();
+  const { selectedSeats } = usePassengerDetailsStore();
 
   return (
     <div
