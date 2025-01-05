@@ -13,6 +13,8 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { useFlightStore } from "@/lib/useFlightStore";
 import { X } from "lucide-react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 const BoardingPass = () => {
   const { selectedFlight, passengers, selectedSeats } =
@@ -24,7 +26,47 @@ const BoardingPass = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const downloadPDF = async () => {
+    console.log("download pass")
 
+    const content = document.getElementById("boarding-pass-content");
+    if (!content) return;
+
+    const canvas = await html2canvas(content);
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4");
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("BoardingPass.pdf");
+  };
+
+  // Print Boarding Pass
+  const printPass = () => {
+    console.log("print pass")
+    const content = document.getElementById("boarding-pass-content");
+    const printWindow = window.open("", "_blank");
+    if (content && printWindow) {
+      printWindow.document.open();
+      printWindow.document.write(`
+        <html>
+          <head>
+            <title>Print Boarding Pass</title>
+            <style>
+              body { margin: 0; padding: 0; }
+              #print-content { width: 100%; height: 100%; }
+            </style>
+          </head>
+          <body>
+            <div id="print-content">${content.outerHTML}</div>
+          </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.print();
+    }
+  };
 
   return (
     <div className="flex justify-center items-center relative">
@@ -217,23 +259,21 @@ const BoardingPass = () => {
                 </div>
               </div>
               <div className="w-full justify-end space-x-4">
-
-              <Button
-                variant="outline"
-                className=" bottom-4 right-4 border-gray-400"
-                // onClick={downloadPDF}
-              >
-                Download PDF
-              </Button>
-              <Button
-                variant="outline"
-                className=" bottom-4 right-[10rem] border-gray-400"
-                // onClick={printPass}
-              >
-                Print
-              </Button>
+                <Button
+                  variant="outline"
+                  className=" bottom-4 right-4 border-gray-400"
+                  onClick={downloadPDF}
+                >
+                  Download PDF
+                </Button>
+                <Button
+                  variant="outline"
+                  className=" bottom-4 right-[10rem] border-gray-400"
+                  onClick={printPass}
+                >
+                  Print
+                </Button>
               </div>
-
             </div>
           </div>
         </DialogContent>

@@ -27,6 +27,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "face-api.js": "^0.22.2",
+    "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.2",
     "hugeicons-react": "^0.3.0",
     "jspdf": "^2.5.2",
