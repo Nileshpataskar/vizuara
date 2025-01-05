@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import html2pdf from "html2pdf.js";
 import { usePassengerDetailsStore } from "@/lib/usePassengerDetails";
 import { Airplane01Icon, Ticket01Icon } from "hugeicons-react";
 import {
@@ -25,22 +24,7 @@ const BoardingPass = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const downloadPDF = () => {
-    const element = document.getElementById("boarding-pass-content");
-    if (element) {
-      html2pdf().from(element).save("BoardingPass.pdf");
-    }
-  };
 
-  const printPass = () => {
-    const content = document.getElementById("boarding-pass-content");
-    if (content) {
-      const printWindow = window.open("", "_blank");
-      printWindow.document.write(content.innerHTML);
-      printWindow.document.close();
-      printWindow.print();
-    }
-  };
 
   return (
     <div className="flex justify-center items-center relative">
@@ -237,14 +221,14 @@ const BoardingPass = () => {
               <Button
                 variant="outline"
                 className=" bottom-4 right-4 border-gray-400"
-                onClick={downloadPDF}
+                // onClick={downloadPDF}
               >
                 Download PDF
               </Button>
               <Button
                 variant="outline"
                 className=" bottom-4 right-[10rem] border-gray-400"
-                onClick={printPass}
+                // onClick={printPass}
               >
                 Print
               </Button>

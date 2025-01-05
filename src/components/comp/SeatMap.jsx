@@ -28,8 +28,13 @@ export const SeatMap = () => {
       </div>
       {/* Selected Seats */}
       <div className="w-full flex flex-col items-center">
-        <div className=" text-black py-2 px-4 rounded-lg  mb-4 flex flex-col">
-          <p> Seats: {selectedSeats?.join(", ") || "None"}</p>
+        <div className="  py-2 px-4 rounded-lg  mb-4 flex flex-col">
+          {selectedSeats.length > 0 && (
+            <p className="text-xl text-gray-800  my-4">
+              {" "}
+              Selected Seats: {selectedSeats?.join(", ") || "None"}
+            </p>
+          )}
           <span className="flex gap-10">
             <Button
               variant="contained"

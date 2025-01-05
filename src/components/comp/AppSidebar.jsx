@@ -19,7 +19,7 @@ const menuItems = [
   { name: "Search Flight", href: "/pages/search-flight" },
   { name: "Passenger Details", href: "/pages/passenger-detail" },
   { name: "Select Seat", href: "/pages/select-seat" },
-  { name: "Boarding Pass", href: "/pages/boarding-pass" },
+   { name: "Boarding Pass", href: "/pages/b" },
   { name: "Self Check-in", href: "/pages/self-checkin" },
   { name: "Conclusion", href: "/pages/conclusion" },
 ];
