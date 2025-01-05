@@ -1,3 +1,4 @@
+import BoardingPass from "@/components/comp/BoardingPass";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +11,7 @@ const page = () => {
       <p className="text-lg">
         Wow, what a whirlwind adventure we had with Digi Yatra! This awesome app
         taught us all about the magic of AI, from making our boarding passes to
-        recognizing our faces at the airport. Let's relive our journey and see
+        recognizing our faces at the airport. Let &apos; s relive our journey and see
         what amazing things we discovered!
       </p>
       <h1 className="text-xl font-bold ">Our Incredible Journey:</h1>
@@ -38,21 +39,21 @@ const page = () => {
 
       <h1 className="text-xl font-bold mt-10">What We Learned:</h1>
       <p className="text-lg">
-        Through our adventure, we realized that AI isn't just some fancy
-        technology. It's like having a wise friend who can do all sorts of
+        Through our adventure, we realized that AI isnt just some fancy
+        technology. Its like having a wise friend who can do all sorts of
         incredible things, like making sure we have our boarding passes ready
         and helping us breeze through airport security.
       </p>
       <p className="text-lg">
-        We also learned that AI isn't perfect. Sometimes, it might get a little
-        mixed up or not recognize us right away. But that's okay! We can help
+        We also learned that AI isnt perfect. Sometimes, it might get a little
+        mixed up or not recognize us right away. But thats okay! We can help
         teach it and make it even better, just like helping a friend learn
         something new.
       </p>
       <h1 className="text-xl font-bold mt-10">Dreaming of More Adventures:</h1>
 
       <p className="text-lg">
-        As we head home from our journey, we can't help but dream of more
+        As we head home from our journey, we cant help but dream of more
         adventures with AI by our side. With its help, we can explore new
         places, discover new things, and make memories that will last a
         lifetime. Who knows what magical adventures await us next time!
@@ -66,6 +67,7 @@ const page = () => {
           <Link href="/pages/self-checkin">Previous</Link>
         </Button>
       </div>
+
     </div>
   );
 };

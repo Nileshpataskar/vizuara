@@ -68,6 +68,7 @@ export const schedule = [
     time2: "22:08",
     duration: "2hr 15min",
     amount: "₹ 7,500",
+    flightNo: "SG-123",
     layover: "Non Stop",
   },
   {
@@ -76,6 +77,7 @@ export const schedule = [
     time2: "08:30",
     duration: "2hr 30min",
     amount: "₹ 6,200",
+    flightNo: "UK-456",
     layover: "Non Stop",
   },
   {
@@ -84,6 +86,7 @@ export const schedule = [
     time2: "16:45",
     duration: "2hr 45min",
     amount: "₹ 8,000",
+    flightNo: "6E-789",
     layover: "1 Stop",
   },
   {
@@ -92,6 +95,7 @@ export const schedule = [
     time2: "11:45",
     duration: "2hr 30min",
     amount: "₹ 5,800",
+    flightNo: "AI-101",
     layover: "Non Stop",
   },
   {
@@ -100,6 +104,7 @@ export const schedule = [
     time2: "21:00",
     duration: "2hr 30min",
     amount: "₹ 9,500",
+    flightNo: "AI-202",
     layover: "Non Stop",
   },
   {
@@ -108,6 +113,7 @@ export const schedule = [
     time2: "14:30",
     duration: "2hr 30min",
     amount: "₹ 7,200",
+    flightNo: "6E-303",
     layover: "1 Stop",
   },
   {
@@ -116,6 +122,8 @@ export const schedule = [
     time2: "00:30",
     duration: "2hr 30min",
     amount: "₹ 6,900",
+    flightNo: "AI-404",
     layover: "Non Stop",
   },
 ];
+

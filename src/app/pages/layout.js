@@ -12,6 +12,7 @@ export default function NewFolderLayout({ children }) {
             width: "100%",
             height: "100vh",
           }}
+          className='min-h-screen'
         >
           {children}
         </div>

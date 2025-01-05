@@ -1,16 +1,22 @@
 import { create } from "zustand";
 
 const usePassengerDetailsStore = create((set, get) => ({
-  selectedFlight: null, // to hold the selected flight details
-
+  selectedFlight: {
+    fromLocation: "",
+    toLocation: "",
+    departureTime: "",
+    arrivalTime: "",
+    flightDuration: "",
+    flightNo: "",
+    layover: "",
+    price: "",
+    logo: "",
+  }, // to hold the selected flight details
   setSelectedFlight: (flightDetails) => set({ selectedFlight: flightDetails }),
 
-  // Seat selection logic
   selectedSeats: [],
-
   setSelectedSeats: (seat) => {
     const currentSeats = get().selectedSeats;
-
     if (currentSeats.includes(seat)) {
       set({ selectedSeats: currentSeats.filter((s) => s !== seat) });
     } else {
@@ -22,10 +28,23 @@ const usePassengerDetailsStore = create((set, get) => ({
     }
   },
 
-  // Passenger details
   passengers: [
-    { id: 1, firstName: "", lastName: "", email: "", capturedImages: [] },
-    { id: 2, firstName: "", lastName: "", email: "", capturedImages: [] },
+    {
+      id: 1,
+      firstName: "",
+      lastName: "",
+      email: "",
+      capturedImages: [],
+      isApproved: false,
+    },
+    {
+      id: 2,
+      firstName: "",
+      lastName: "",
+      email: "",
+      capturedImages: [],
+      isApproved: false,
+    },
   ],
 
   updatePassengerDetails: (id, field, value) =>
@@ -35,7 +54,6 @@ const usePassengerDetailsStore = create((set, get) => ({
       ),
     })),
 
-  // Images logic for individual passengers
   addCapturedImagesForPassenger: (id, images) =>
     set((state) => ({
       passengers: state.passengers.map((passenger) =>
@@ -54,6 +72,29 @@ const usePassengerDetailsStore = create((set, get) => ({
         passenger.id === id ? { ...passenger, capturedImages: [] } : passenger
       ),
     })),
+
+  approvePassenger: (id) =>
+    set((state) => ({
+      passengers: state.passengers.map((passenger) =>
+        passenger.id === id ? { ...passenger, isApproved: true } : passenger
+      ),
+    })),
+
+  // Verification image state
+  verificationImage: [],
+
+  addVerificationImage: (image) =>
+    set((state) => ({
+      verificationImage: [...state.verificationImage, image],
+    })),
+
+  updatePassengerApproval: (id) => {
+    set((state) => ({
+      passengers: state.passengers.map((p) =>
+        p.id === id ? { ...p, isApproved: true } : p
+      ),
+    }));
+  },
 }));
 
 export { usePassengerDetailsStore };
