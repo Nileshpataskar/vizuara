@@ -206,7 +206,9 @@ const Page = () => {
 
           {/* Previous and Next Buttons */}
           <div className="flex space-x-4 mt-4">
-            <Button className="bg-gray-500 text-white">
+            <Button 
+            className="bg-gray-500 text-white"
+            >
               <Link href="/pages/search-flight">Previous</Link>
             </Button>
             <Button

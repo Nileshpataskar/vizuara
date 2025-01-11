@@ -16,10 +16,11 @@ import { X } from "lucide-react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const BoardingPass = () => {
-  const { selectedFlight, passengers, selectedSeats } =
-    usePassengerDetailsStore();
+const BoardingPass = ({ passengersData }) => {
+  const { selectedFlight, selectedSeats } = usePassengerDetailsStore();
 
+  
+  const passengers = passengersData;
   const { selectedDate } = useFlightStore();
   const [open, setOpen] = useState(false);
 
@@ -27,7 +28,7 @@ const BoardingPass = () => {
   const handleClose = () => setOpen(false);
 
   const downloadPDF = async () => {
-    console.log("download pass")
+    console.log("download pass");
 
     const content = document.getElementById("boarding-pass-content");
     if (!content) return;
@@ -44,7 +45,7 @@ const BoardingPass = () => {
 
   // Print Boarding Pass
   const printPass = () => {
-    console.log("print pass")
+    console.log("print pass");
     const content = document.getElementById("boarding-pass-content");
     const printWindow = window.open("", "_blank");
     if (content && printWindow) {
@@ -108,8 +109,8 @@ const BoardingPass = () => {
               </div>
               <div className="flex justify-between px-8">
                 <h2 className="text-lg font-semibold ">{`${
-                  passengers[0]?.firstName || "First Name"
-                } ${passengers[0]?.lastName || "LastName"} `}</h2>
+                  passengersData?.firstName || "First Name"
+                } ${passengersData?.lastName || "LastName"} `}</h2>
                 <h2 className="text-lg font-semibold ">{`${
                   selectedFlight.fromLocation || "Unknown"
                 } To ${selectedFlight.toLocation || "Unknown"} `}</h2>
@@ -202,8 +203,8 @@ const BoardingPass = () => {
               </div>
               <div className="flex flex-col p-4 space-y-2 justify-center">
                 <h2 className="text-lg font-semibold ">{`${
-                  passengers[0]?.firstName || "First Name"
-                } ${passengers[0]?.lastName || "LastName"} `}</h2>
+                  passengersData?.firstName || "First Name"
+                } ${passengersData?.lastName || "LastName"} `}</h2>
 
                 <h2 className="text-lg font-semibold ">{`${
                   selectedFlight.fromLocation || "Unknown"

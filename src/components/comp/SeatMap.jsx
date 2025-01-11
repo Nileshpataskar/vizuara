@@ -46,7 +46,7 @@ export const SeatMap = () => {
               variant="contained"
               className=" rounded-xl bg-gradient-to-r from-[#f374b8] to-[#f28259] text-white "
             >
-              <Link href="/pages/boarding-pass">Next</Link>
+              <Link href="/pages/b">Next</Link>
             </Button>
           </span>
         </div>

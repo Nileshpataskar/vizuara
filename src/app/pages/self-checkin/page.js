@@ -140,7 +140,7 @@ const SelfCheckin = () => {
           <div className="mt-6">
             <h2 className="text-xl font-semibold text-white">
               {verificationStatus === "not_verified"
-                ? "Not Verified"
+                ? "Not Verified Try Again..."
                 : `Approved - Passenger ID: ${verificationStatus.split(": ")[1]}`}
             </h2>
 
