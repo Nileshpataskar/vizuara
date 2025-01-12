@@ -18,13 +18,15 @@ const SelfCheckin = () => {
     verificationImage,
     addVerificationImage,
     passengers,
-    updatePassengerApproval, // Add a method to update passenger approval
+    updatePassengerApproval,
   } = usePassengerDetailsStore();
 
   useEffect(() => {
     // Clean up webcam if the component unmounts
-    return () => {};
-  }, []);
+    return () => {
+      console.log("Passenger In Self Checkin", passengers);
+    };
+  }, [passengers]);
 
   const captureVerificationImage = () => {
     setIsCameraOpen(true); // Open camera
@@ -72,7 +74,7 @@ const SelfCheckin = () => {
       console.log("Error during validation:", e);
       setVerificationStatus("not_verified");
     }
-    console.log("Passenger approval",passengers)
+    console.log("Passenger approval", passengers);
 
     setVerificationInProgress(false);
   };
@@ -89,9 +91,6 @@ const SelfCheckin = () => {
           One Last Step to Fly
         </h1>
       </div>
-
-
-      
 
       <div className="flex justify-center w-full flex-col space-y-10 items-center">
         <Button
@@ -141,7 +140,9 @@ const SelfCheckin = () => {
             <h2 className="text-xl font-semibold text-white">
               {verificationStatus === "not_verified"
                 ? "Not Verified Try Again..."
-                : `Approved - Passenger ID: ${verificationStatus.split(": ")[1]}`}
+                : `Approved - Passenger ID: ${
+                    verificationStatus.split(": ")[1]
+                  }`}
             </h2>
 
             {verificationStatus !== "not_verified" && (
@@ -149,22 +150,28 @@ const SelfCheckin = () => {
                 <h3 className="font-semibold">Passenger Details</h3>
                 <p>
                   Name:{" "}
-                  {
-                    passengers.find(
-                      (p) => p.id === parseInt(verificationStatus.split(": ")[1])
-                    )?.firstName
-                  }{" "}
-                  {
-                    passengers.find(
-                      (p) => p.id === parseInt(verificationStatus.split(": ")[1])
-                    )?.lastName
-                  }
+                  {passengers.find(
+                    (p) => p.id === parseInt(verificationStatus.split(": ")[1])
+                  )?.isApproved
+                    ? `${
+                        passengers.find(
+                          (p) =>
+                            p.id === parseInt(verificationStatus.split(": ")[1])
+                        )?.firstName
+                      } ${
+                        passengers.find(
+                          (p) =>
+                            p.id === parseInt(verificationStatus.split(": ")[1])
+                        )?.lastName
+                      }`
+                    : "Not Approved Yet"}
                 </p>
                 <p>
                   Email:{" "}
                   {
                     passengers.find(
-                      (p) => p.id === parseInt(verificationStatus.split(": ")[1])
+                      (p) =>
+                        p.id === parseInt(verificationStatus.split(": ")[1])
                     )?.email
                   }
                 </p>

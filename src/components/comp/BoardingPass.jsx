@@ -19,7 +19,6 @@ import jsPDF from "jspdf";
 const BoardingPass = ({ passengersData }) => {
   const { selectedFlight, selectedSeats } = usePassengerDetailsStore();
 
-  
   const passengers = passengersData;
   const { selectedDate } = useFlightStore();
   const [open, setOpen] = useState(false);
@@ -180,7 +179,7 @@ const BoardingPass = ({ passengersData }) => {
                     </span>
                   </div>
                 </div>
-                {passengers[0]?.isApproved && (
+                {passengersData?.isApproved && (
                   <div className="flex items-center absolute right-44 top-10">
                     <Image
                       src="/approved.png"
